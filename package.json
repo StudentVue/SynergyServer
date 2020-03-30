@@ -1,7 +1,7 @@
 {
   "main": "dist/index.js",
   "scripts": {
-    "start": "./node_modules/.bin/tsc-watch --onSuccess \"node .\""
+    "develop": "./node_modules/.bin/tsc-watch --onSuccess \"node .\""
   },
   "dependencies": {
     "soap": "^0.31.0"

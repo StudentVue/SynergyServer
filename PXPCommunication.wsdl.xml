@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://edupoint.com/webservices/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://edupoint.com/webservices/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://edupoint.com/webservices/">
+      <s:element name="ProcessWebServiceRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="skipLoginLog" type="s:boolean"/>
+            <s:element minOccurs="1" maxOccurs="1" name="parent" type="s:boolean"/>
+            <s:element minOccurs="0" maxOccurs="1" name="webServiceHandleName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="methodName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="paramStr" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessWebServiceRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProcessWebServiceRequestResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="typeOfUser" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="secretKey" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="signedXmlBase64Encoded" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidUserResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessWebServiceRequestMultiWeb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="skipLoginLog" type="s:boolean"/>
+            <s:element minOccurs="1" maxOccurs="1" name="parent" type="s:boolean"/>
+            <s:element minOccurs="0" maxOccurs="1" name="webDBName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="webServiceHandleName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="methodName" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="paramStr" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessWebServiceRequestMultiWebResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProcessWebServiceRequestMultiWebResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="applicationName" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticateUserResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ScheduleParentConference">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Conf_GU" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="Stu_Sch_YR_GU" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="addConference" type="s:boolean"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ScheduleParentConferenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ScheduleParentConferenceResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EmailParentConference">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Stu_Sch_YR_GU" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EmailParentConferenceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmailParentConferenceResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWidgetData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="widget" type="s:string"/>
+            <s:element minOccurs="0" maxOccurs="1" name="agu" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWidgetDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWidgetDataResult"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string"/>
+      <s:element name="anyType" nillable="true"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ProcessWebServiceRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcessWebServiceRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ProcessWebServiceRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcessWebServiceRequestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ValidUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidUser"/>
+  </wsdl:message>
+  <wsdl:message name="ValidUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ProcessWebServiceRequestMultiWebSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcessWebServiceRequestMultiWeb"/>
+  </wsdl:message>
+  <wsdl:message name="ProcessWebServiceRequestMultiWebSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcessWebServiceRequestMultiWebResponse"/>
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateUser"/>
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateUserResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ScheduleParentConferenceSoapIn">
+    <wsdl:part name="parameters" element="tns:ScheduleParentConference"/>
+  </wsdl:message>
+  <wsdl:message name="ScheduleParentConferenceSoapOut">
+    <wsdl:part name="parameters" element="tns:ScheduleParentConferenceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="EmailParentConferenceSoapIn">
+    <wsdl:part name="parameters" element="tns:EmailParentConference"/>
+  </wsdl:message>
+  <wsdl:message name="EmailParentConferenceSoapOut">
+    <wsdl:part name="parameters" element="tns:EmailParentConferenceResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetWidgetDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWidgetData"/>
+  </wsdl:message>
+  <wsdl:message name="GetWidgetDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWidgetDataResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ProcessWebServiceRequestHttpPostIn">
+    <wsdl:part name="userID" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="skipLoginLog" type="s:string"/>
+    <wsdl:part name="parent" type="s:string"/>
+    <wsdl:part name="webServiceHandleName" type="s:string"/>
+    <wsdl:part name="methodName" type="s:string"/>
+    <wsdl:part name="paramStr" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ProcessWebServiceRequestHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="ValidUserHttpPostIn">
+    <wsdl:part name="userName" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="typeOfUser" type="s:string"/>
+    <wsdl:part name="secretKey" type="s:string"/>
+    <wsdl:part name="signedXmlBase64Encoded" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ValidUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="ProcessWebServiceRequestMultiWebHttpPostIn">
+    <wsdl:part name="userID" type="s:string"/>
+    <wsdl:part name="password" type="s:string"/>
+    <wsdl:part name="skipLoginLog" type="s:string"/>
+    <wsdl:part name="parent" type="s:string"/>
+    <wsdl:part name="webDBName" type="s:string"/>
+    <wsdl:part name="webServiceHandleName" type="s:string"/>
+    <wsdl:part name="methodName" type="s:string"/>
+    <wsdl:part name="paramStr" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ProcessWebServiceRequestMultiWebHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserHttpPostIn">
+    <wsdl:part name="token" type="s:string"/>
+    <wsdl:part name="applicationName" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="AuthenticateUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="ScheduleParentConferenceHttpPostIn">
+    <wsdl:part name="Conf_GU" type="s:string"/>
+    <wsdl:part name="Stu_Sch_YR_GU" type="s:string"/>
+    <wsdl:part name="addConference" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="ScheduleParentConferenceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="EmailParentConferenceHttpPostIn">
+    <wsdl:part name="Stu_Sch_YR_GU" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="EmailParentConferenceHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetWidgetDataHttpPostIn">
+    <wsdl:part name="widget" type="s:string"/>
+    <wsdl:part name="agu" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="GetWidgetDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:anyType"/>
+  </wsdl:message>
+  <wsdl:portType name="PXPCommunicationSoap">
+    <wsdl:operation name="ProcessWebServiceRequest">
+      <wsdl:input message="tns:ProcessWebServiceRequestSoapIn"/>
+      <wsdl:output message="tns:ProcessWebServiceRequestSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ValidUser">
+      <wsdl:input message="tns:ValidUserSoapIn"/>
+      <wsdl:output message="tns:ValidUserSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessWebServiceRequestMultiWeb">
+      <wsdl:input message="tns:ProcessWebServiceRequestMultiWebSoapIn"/>
+      <wsdl:output message="tns:ProcessWebServiceRequestMultiWebSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:input message="tns:AuthenticateUserSoapIn"/>
+      <wsdl:output message="tns:AuthenticateUserSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ScheduleParentConference">
+      <wsdl:input message="tns:ScheduleParentConferenceSoapIn"/>
+      <wsdl:output message="tns:ScheduleParentConferenceSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="EmailParentConference">
+      <wsdl:input message="tns:EmailParentConferenceSoapIn"/>
+      <wsdl:output message="tns:EmailParentConferenceSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetWidgetData">
+      <wsdl:input message="tns:GetWidgetDataSoapIn"/>
+      <wsdl:output message="tns:GetWidgetDataSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PXPCommunicationHttpPost">
+    <wsdl:operation name="ProcessWebServiceRequest">
+      <wsdl:input message="tns:ProcessWebServiceRequestHttpPostIn"/>
+      <wsdl:output message="tns:ProcessWebServiceRequestHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ValidUser">
+      <wsdl:input message="tns:ValidUserHttpPostIn"/>
+      <wsdl:output message="tns:ValidUserHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessWebServiceRequestMultiWeb">
+      <wsdl:input message="tns:ProcessWebServiceRequestMultiWebHttpPostIn"/>
+      <wsdl:output message="tns:ProcessWebServiceRequestMultiWebHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <wsdl:input message="tns:AuthenticateUserHttpPostIn"/>
+      <wsdl:output message="tns:AuthenticateUserHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ScheduleParentConference">
+      <wsdl:input message="tns:ScheduleParentConferenceHttpPostIn"/>
+      <wsdl:output message="tns:ScheduleParentConferenceHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="EmailParentConference">
+      <wsdl:input message="tns:EmailParentConferenceHttpPostIn"/>
+      <wsdl:output message="tns:EmailParentConferenceHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetWidgetData">
+      <wsdl:input message="tns:GetWidgetDataHttpPostIn"/>
+      <wsdl:output message="tns:GetWidgetDataHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PXPCommunicationSoap" type="tns:PXPCommunicationSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ProcessWebServiceRequest">
+      <soap:operation soapAction="http://edupoint.com/webservices/ProcessWebServiceRequest" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidUser">
+      <soap:operation soapAction="http://edupoint.com/webservices/ValidUser" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessWebServiceRequestMultiWeb">
+      <soap:operation soapAction="http://edupoint.com/webservices/ProcessWebServiceRequestMultiWeb" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap:operation soapAction="http://edupoint.com/webservices/AuthenticateUser" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ScheduleParentConference">
+      <soap:operation soapAction="http://edupoint.com/webservices/ScheduleParentConference" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EmailParentConference">
+      <soap:operation soapAction="http://edupoint.com/webservices/EmailParentConference" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWidgetData">
+      <soap:operation soapAction="http://edupoint.com/webservices/GetWidgetData" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PXPCommunicationSoap12" type="tns:PXPCommunicationSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ProcessWebServiceRequest">
+      <soap12:operation soapAction="http://edupoint.com/webservices/ProcessWebServiceRequest" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidUser">
+      <soap12:operation soapAction="http://edupoint.com/webservices/ValidUser" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessWebServiceRequestMultiWeb">
+      <soap12:operation soapAction="http://edupoint.com/webservices/ProcessWebServiceRequestMultiWeb" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <soap12:operation soapAction="http://edupoint.com/webservices/AuthenticateUser" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ScheduleParentConference">
+      <soap12:operation soapAction="http://edupoint.com/webservices/ScheduleParentConference" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EmailParentConference">
+      <soap12:operation soapAction="http://edupoint.com/webservices/EmailParentConference" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWidgetData">
+      <soap12:operation soapAction="http://edupoint.com/webservices/GetWidgetData" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PXPCommunicationHttpPost" type="tns:PXPCommunicationHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="ProcessWebServiceRequest">
+      <http:operation location="/ProcessWebServiceRequest"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidUser">
+      <http:operation location="/ValidUser"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessWebServiceRequestMultiWeb">
+      <http:operation location="/ProcessWebServiceRequestMultiWeb"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateUser">
+      <http:operation location="/AuthenticateUser"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ScheduleParentConference">
+      <http:operation location="/ScheduleParentConference"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EmailParentConference">
+      <http:operation location="/EmailParentConference"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWidgetData">
+      <http:operation location="/GetWidgetData"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PXPCommunication">
+    <wsdl:port name="PXPCommunicationSoap" binding="tns:PXPCommunicationSoap">
+      <soap:address location="[ORIGIN]/Service/PXPCommunication.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="PXPCommunicationSoap12" binding="tns:PXPCommunicationSoap12">
+      <soap12:address location="[ORIGIN]/Service/PXPCommunication.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="PXPCommunicationHttpPost" binding="tns:PXPCommunicationHttpPost">
+      <http:address location="[ORIGIN]/Service/PXPCommunication.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
