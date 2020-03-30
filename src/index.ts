@@ -3,6 +3,21 @@ import * as path from 'path';
 
 import * as http from 'http';
 import * as soap from 'soap';
+import * as xml2json from 'xml2json';
+
+import StudentVue from './StudentVue';
+
+type MethodName = 'GetPXPMessages'
+
+interface IProcessWebServiceRequestArgs {
+    userID: string
+    password: string
+    skipLoginLog: boolean
+    parent: boolean
+    webServiceHandleName: string
+    methodName: MethodName
+    paramStr: string
+}
 
 /*
 CONFIGURATION
@@ -15,19 +30,15 @@ const PORT = '8000';
 const services = {
     PXPCommunication: {
         PXPCommunicationSoap: {
-            ProcessWebServiceRequest: (args: any) => {
-                console.log(args);
-                return {
-                    'test': 'test'
-                };
+            ProcessWebServiceRequest: (args: IProcessWebServiceRequestArgs) => {
+                return StudentVue[args.methodName](JSON.parse(xml2json.toJson(args.paramStr))['Parms']);
             }
         }
     }
 };
 
-
 const wsdl = fs.readFileSync(path.join(__dirname, '..', 'PXPCommunication.wsdl.xml'), 'utf8')
-    .replace('[ORIGIN]', SCHEMA + '://' + HOSTNAME + ':' + PORT);
+    .replace(/\[ORIGIN]/g, SCHEMA + '://' + HOSTNAME + ':' + PORT);
 
 const server = http.createServer((req, res) => {
     res.end('404: Not Found: ' + req.url);
