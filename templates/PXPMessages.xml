@@ -1,5 +1,0 @@
-<PXPMessagesData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <MessageListings>
-        <% _.forEach(messages, function (message) { %><MessageListing <% print(Object.entries(message).map(([k, v]) => k + '="' + v + '"').join(' ')) %>/><% }) %>
-    </MessageListings>
-</PXPMessagesData>
