@@ -4,14 +4,10 @@ import * as path from 'path';
 import * as https from 'https';
 import * as soap from 'soap';
 import * as xml2json from 'xml2json';
-import * as Entities from 'html-entities';
 
 import * as _ from 'lodash';
 
 import StudentVue from './StudentVue';
-
-const XmlEntities = Entities.XmlEntities;
-const entities = new XmlEntities();
 
 interface IProcessWebServiceRequestArgs {
     userID: string
@@ -27,11 +23,12 @@ interface IProcessWebServiceRequestArgs {
 CONFIGURATION
 */
 
-const SCHEMA = 'https';
+const SCHEMA: string = 'https';
 const HOSTNAME = 'localhost';
-const PORT = 8000;
+const PORT = Number(process.env.PORT) || 8000;
 
-const ORIGIN = SCHEMA + '://' + HOSTNAME + ':' + PORT;
+const ORIGIN = SCHEMA + '://' + HOSTNAME + (
+    (SCHEMA == 'https' && PORT != 443 || SCHEMA == 'http' && PORT != 80) ? ':' + PORT : '');
 
 const services = {
     PXPCommunication: {
@@ -49,8 +46,8 @@ const wsdlTemplate = _.template(fs.readFileSync(path.join(__dirname, '..', 'PXPC
 const wsdl = wsdlTemplate({ origin: ORIGIN });
 
 const server = https.createServer({
-    key: process.env.KEY || fs.readFileSync(path.join(__dirname, '..', 'localhost-key.pem')),
-    cert: process.env.CERT || fs.readFileSync(path.join(__dirname, '..', 'localhost.pem')),
+    key: fs.readFileSync(process.env.KEY || path.join(__dirname, '..', 'localhost-key.pem')),
+    cert: fs.readFileSync(process.env.CERT || path.join(__dirname, '..', 'localhost.pem')),
 }, (req: any, res: any) => {
     res.end('404: Not Found: ' + req.url);
 });
