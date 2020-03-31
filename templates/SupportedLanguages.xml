@@ -1,0 +1,8 @@
+<LanguageLists xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Language Code="00" Name="English" EnglishDescription="English"/>
+    <Language Code="01" Name="Español" EnglishDescription="Spanish"/>
+    <Language Code="02" Name="Tiếng Việt" EnglishDescription="Vietnamese"/>
+    <Language Code="03" Name="中文" EnglishDescription="Cantonese"/>
+    <Language Code="05" Name="Filipino" EnglishDescription="Filipino (Pilipino or Tagalog)"/>
+    <Language Code="11" Name="العربية" EnglishDescription="Arabic"/>
+</LanguageLists>

@@ -490,13 +490,13 @@
   </wsdl:binding>
   <wsdl:service name="PXPCommunication">
     <wsdl:port name="PXPCommunicationSoap" binding="tns:PXPCommunicationSoap">
-      <soap:address location="[ORIGIN]/Service/PXPCommunication.asmx"/>
+      <soap:address location="<%= origin %>/Service/PXPCommunication.asmx"/>
     </wsdl:port>
     <wsdl:port name="PXPCommunicationSoap12" binding="tns:PXPCommunicationSoap12">
-      <soap12:address location="[ORIGIN]/Service/PXPCommunication.asmx"/>
+      <soap12:address location="<%= origin %>/Service/PXPCommunication.asmx"/>
     </wsdl:port>
     <wsdl:port name="PXPCommunicationHttpPost" binding="tns:PXPCommunicationHttpPost">
-      <http:address location="[ORIGIN]/Service/PXPCommunication.asmx"/>
+      <http:address location="<%= origin %>/Service/PXPCommunication.asmx"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

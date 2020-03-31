@@ -1,13 +1,17 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import * as http from 'http';
+import * as https from 'https';
 import * as soap from 'soap';
 import * as xml2json from 'xml2json';
+import * as Entities from 'html-entities';
+
+import * as _ from 'lodash';
 
 import StudentVue from './StudentVue';
 
-type MethodName = 'GetPXPMessages'
+const XmlEntities = Entities.XmlEntities;
+const entities = new XmlEntities();
 
 interface IProcessWebServiceRequestArgs {
     userID: string
@@ -15,7 +19,7 @@ interface IProcessWebServiceRequestArgs {
     skipLoginLog: boolean
     parent: boolean
     webServiceHandleName: string
-    methodName: MethodName
+    methodName: string
     paramStr: string
 }
 
@@ -23,24 +27,31 @@ interface IProcessWebServiceRequestArgs {
 CONFIGURATION
 */
 
-const SCHEMA = 'http';
+const SCHEMA = 'https';
 const HOSTNAME = 'localhost';
-const PORT = '8000';
+const PORT = 8000;
+
+const ORIGIN = SCHEMA + '://' + HOSTNAME + ':' + PORT;
 
 const services = {
     PXPCommunication: {
         PXPCommunicationSoap: {
             ProcessWebServiceRequest: (args: IProcessWebServiceRequestArgs) => {
-                return StudentVue[args.methodName](JSON.parse(xml2json.toJson(args.paramStr))['Parms']);
+                return {
+                    ProcessWebServiceRequestResult: StudentVue[args.methodName](JSON.parse(xml2json.toJson(args.paramStr))['Parms'])
+                };
             }
         }
     }
 };
 
-const wsdl = fs.readFileSync(path.join(__dirname, '..', 'PXPCommunication.wsdl.xml'), 'utf8')
-    .replace(/\[ORIGIN]/g, SCHEMA + '://' + HOSTNAME + ':' + PORT);
+const wsdlTemplate = _.template(fs.readFileSync(path.join(__dirname, '..', 'PXPCommunication.wsdl.xml'), 'utf8'));
+const wsdl = wsdlTemplate({ origin: ORIGIN });
 
-const server = http.createServer((req, res) => {
+const server = https.createServer({
+    key: process.env.KEY || fs.readFileSync(path.join(__dirname, '..', 'localhost-key.pem')),
+    cert: process.env.CERT || fs.readFileSync(path.join(__dirname, '..', 'localhost.pem')),
+}, (req: any, res: any) => {
     res.end('404: Not Found: ' + req.url);
 });
 
@@ -50,3 +61,6 @@ const soapServer = soap.listen(server, '/Service/PXPCommunication.asmx', service
 });
 
 soapServer.log = console.log;
+soapServer.on('response', response => {
+    response.result = response.result.replace(/&quot;/g, '"');
+});
