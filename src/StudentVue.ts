@@ -15,22 +15,22 @@ const SoundFileData = _.template(fs.readFileSync(path.join(TEMPLATES_PATH, 'Soun
 const LanguageLists = _.template(fs.readFileSync(path.join(TEMPLATES_PATH, 'LanguageLists.xml'), 'utf8'));
 const AllModuleRecordData = _.template(fs.readFileSync(path.join(TEMPLATES_PATH, 'AllModuleRecordData.xml'), 'utf8'));
 
-const PXPMessagesData = _.template(fs.readFileSync(path.join(TEMPLATES_PATH, 'PXPMessages.xml'), 'utf8'));
+const PXPMessagesData = _.template(fs.readFileSync(path.join(TEMPLATES_PATH, 'PXPMessagesData.xml'), 'utf8'));
 
 const StudentVue: { [key: string]: (params: object) => any } = {
     SHOW_GET_FORGOT_PASSWORD_BUTTON_STATUS: () => true,
     GETSECURITYSTATUS: () => false,
     GetActivationLinkStatus_StudentVUE: () => true,
-    GETACKTEXT: () => {
-        return AckStatement({
-            privacyStatement: 'This is a test privacy statement.'
-        });
-    },
     LOGOUT: () => null,
 
     TestWebServiceURL: () => {
         return TestWebServiceURL({
             organizationName: CONFIG.organizationName
+        });
+    },
+    GETACKTEXT: () => {
+        return AckStatement({
+            privacyStatement: 'This is a test privacy statement.'
         });
     },
 

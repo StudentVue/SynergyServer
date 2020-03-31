@@ -58,6 +58,13 @@ const soapServer = soap.listen(server, '/Service/PXPCommunication.asmx', service
 });
 
 soapServer.log = console.log;
+soapServer.on('request', request => {
+    for (let [key, value] of Object.entries(request.Body.ProcessWebServiceRequest)) {
+        if (typeof value === 'object') {
+            request.Body.ProcessWebServiceRequest[key] = request.Body.ProcessWebServiceRequest[key]['$value'] || '';
+        }
+    }
+});
 soapServer.on('response', response => {
     response.result = response.result.replace(/&quot;/g, '"');
 });
