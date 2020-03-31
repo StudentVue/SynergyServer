@@ -27,7 +27,7 @@ const StudentVue: { [key: string]: (params: object) => any } = {
     GETSECURITYSTATUS: () => false,
     ChildList: () => {
         return ChildList({
-            districtEvents: [{DstEventGU: '', EventDate: moment().format('MM/DD/YYYY'), EventTime: '', ShortTitle: 'Test', ShortDesc: 'This is a mock StudentVue server, behavior may be unpredictable.'}],
+            districtEvents: [{DstEventGU: '', EventDate: moment().format('MM/DD/YYYY'), EventTime: '', ShortTitle: 'Test', ShortDesc: 'This is a test StudentVue server, behavior may be unpredictable.'}],
             childName: 'Test User',
             childID: 12345678,
             organizationName: CONFIG.organizationName,
