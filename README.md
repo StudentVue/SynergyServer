@@ -6,7 +6,7 @@ This is a in-progress implementation of a server that functions like the backend
 
 So far, it only supports some background methods and StudentVue messages.
 
-Current, I'm hosting an instance at [studentvue1.kaijchang.com](https://studentvue1.kaijchang.com/), but the uptime might be flaky.
+Currently, I'm hosting an instance at [studentvue1.kaijchang.com](https://studentvue1.kaijchang.com/), but the uptime might be flaky.
 
 ## Running an Instance
 
