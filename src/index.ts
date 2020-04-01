@@ -23,12 +23,12 @@ interface IProcessWebServiceRequestArgs {
 CONFIGURATION
 */
 
-const SCHEMA: string = 'https';
+const SCHEMA: string = process.env.SCHEMA || 'https';
 const HOSTNAME = process.env.HOSTNAME || 'localhost';
 const PORT = Number(process.env.PORT) || 8000;
 
-const ORIGIN = SCHEMA + '://' + HOSTNAME + (
-    (SCHEMA == 'https' && PORT != 443 || SCHEMA == 'http' && PORT != 80) ? ':' + PORT : '');
+const ORIGIN = process.env.ORIGIN || (SCHEMA + '://' + HOSTNAME + (
+    (SCHEMA == 'https' && PORT != 443 || SCHEMA == 'http' && PORT != 80) ? ':' + PORT : ''));
 
 const services = {
     PXPCommunication: {
