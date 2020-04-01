@@ -46,8 +46,8 @@ const wsdlTemplate = _.template(fs.readFileSync(path.join(__dirname, '..', 'PXPC
 const wsdl = wsdlTemplate({ origin: ORIGIN });
 
 const server = https.createServer({
-    key: fs.readFileSync(process.env.KEY || path.join(__dirname, '..', 'localhost-key.pem')),
-    cert: fs.readFileSync(process.env.CERT || path.join(__dirname, '..', 'localhost.pem')),
+    key: process.env.KEY ? fs.readFileSync(process.env.KEY) : undefined,
+    cert: process.env.CERT ? fs.readFileSync(process.env.CERT) : undefined,
 }, (req: any, res: any) => {
     res.end('404: Not Found: ' + req.url);
 });
