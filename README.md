@@ -10,12 +10,12 @@ Currently, I'm hosting an instance at [studentvue1.kaijchang.com](https://studen
 
 ## Running an Instance
 
-If you want to be able to interface with your instance from any of our provided client libraries or from the StudentVue App, you'll need to acquire a SSL certificate for your server.
+You'll need a SSL certificate for your server and port forwarding for ports 80 and 443.
 
 After you've done so, you can run your instance like so:
 
-`CERT="<PATH TO CERTIFICATE>" KEY="<PATH TO PRIVATE KEY>" ORIGIN="<FRONT FACING URL>" PORT=<PORT TO BIND TO> yarn start`
+`CERT="<PATH TO CERTIFICATE>" KEY="<PATH TO PRIVATE KEY>" ORIGIN="<FRONT FACING URL>" yarn start`
 
-For me, this command looks like `CERT="/etc/letsencrypt/live/studentvue1.kaijchang.com/fullchain.pem" KEY="/etc/letsencrypt/live/studentvue1.kaijchang.com/privkey.pem" ORIGIN="https://studentvue1.kaijchang.com" PORT=443 yarn start`
+For me, this command looks like `CERT="/etc/letsencrypt/live/studentvue1.kaijchang.com/fullchain.pem" KEY="/etc/letsencrypt/live/studentvue1.kaijchang.com/privkey.pem" ORIGIN="https://studentvue1.kaijchang.com" yarn start`
 
 After that, you should be able to interface to this server similarly to any official server for StudentVue.
