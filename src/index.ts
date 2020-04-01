@@ -24,7 +24,7 @@ CONFIGURATION
 */
 
 const SCHEMA: string = 'https';
-const HOSTNAME = 'localhost';
+const HOSTNAME = process.env.HOSTNAME || 'localhost';
 const PORT = Number(process.env.PORT) || 8000;
 
 const ORIGIN = SCHEMA + '://' + HOSTNAME + (
@@ -59,9 +59,10 @@ const soapServer = soap.listen(server, '/Service/PXPCommunication.asmx', service
 
 soapServer.log = console.log;
 soapServer.on('request', request => {
-    for (let [key, value] of Object.entries(request.Body.ProcessWebServiceRequest)) {
+    for (let key of Object.keys(request.Body.ProcessWebServiceRequest)) {
+        const value: any = request.Body.ProcessWebServiceRequest[key];
         if (typeof value === 'object') {
-            request.Body.ProcessWebServiceRequest[key] = request.Body.ProcessWebServiceRequest[key]['$value'] || '';
+            request.Body.ProcessWebServiceRequest[key] = value['$value'] || '';
         }
     }
 });
