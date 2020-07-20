@@ -5,7 +5,7 @@
     "start": "tsc && node ."
   },
   "dependencies": {
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "soap": "^0.31.0",
     "xml2json": "^0.12.0"
